@@ -1,0 +1,44 @@
+﻿@*
+
+*@
+@model IEnumerable<Recept>
+
+<h1>Popis recepata</h1>
+<p>
+    <a asp-action="Create" class="btn btn-success"> Unesi novi recept</a>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(model => model.SlikaUrl)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Id)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Naziv)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.VrijemePripreme)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.BrojOsoba)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Sastojci)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Priprema)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Kategorija)</th>
+            <th>Radnje nad podacima</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> <img src="@Html.DisplayFor(modelItem => item.SlikaUrl)" width="100" height="100" alt="@Html.DisplayFor(modelItem => item.Naziv)" /> </td>
+                <th scope="row">@Html.DisplayFor(modelItem => item.Id)</th>
+                <td>@Html.DisplayFor(modelItem => item.Naziv)</td>
+                <td>@Html.DisplayFor(modelItem => item.VrijemePripreme)</td>
+                <td>@Html.DisplayFor(modelItem => item.BrojOsoba)</td>
+                <td>@Html.DisplayFor(modelItem => item.Sastojci)</td>
+                <td>@Html.DisplayFor(modelItem => item.Priprema)</td>
+                <td>@Html.DisplayFor(modelItem => item.Kategorija.Naziv)</td>
+                <td><a asp-action="Update" asp-route-id="@item.Id" class="btn btn-info"> Uredi</a> | <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Obriši</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@{
+}
